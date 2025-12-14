@@ -7,6 +7,37 @@ A production-ready, full-stack fraud detection system built with multi-model ens
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.28+-red.svg)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
+## 📸 Screenshots
+
+### Dashboard Interface
+<table>
+  <tr>
+    <td width="50%">
+      <img src="dashboard/assets/pipeline_diagram.png" alt="ML Pipeline Architecture" />
+      <p align="center"><b>System Architecture</b></p>
+    </td>
+    <td width="50%">
+      <!-- Add your fraud detection page screenshot here -->
+      <p align="center"><b>Fraud Detection Interface</b></p>
+      <p align="center"><i>Take a screenshot of the fraud detection page at http://localhost:8501</i></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <!-- Add model performance screenshot here -->
+      <p align="center"><b>Model Performance Dashboard</b></p>
+      <p align="center"><i>Screenshot of performance visualizations page</i></p>
+    </td>
+    <td width="50%">
+      <!-- Add admin panel screenshot here -->
+      <p align="center"><b>Admin Panel</b></p>
+      <p align="center"><i>Screenshot of admin statistics dashboard</i></p>
+    </td>
+  </tr>
+</table>
+
+> **Note**: To add UI screenshots, capture screens from your running application and save them in `dashboard/assets/` directory, then update the image paths above.
+
 ## 🎯 Features
 
 ### Machine Learning
