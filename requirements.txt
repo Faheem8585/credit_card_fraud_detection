@@ -1,0 +1,18 @@
+pandas
+numpy
+scikit-learn<1.6
+imbalanced-learn
+matplotlib
+seaborn
+fastapi
+uvicorn
+pydantic
+joblib
+streamlit
+requests
+# Full-stack dependencies
+sqlalchemy
+psycopg2-binary
+python-jose[cryptography]
+passlib[bcrypt]
+python-multipart

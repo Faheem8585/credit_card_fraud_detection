@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: fraud_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: fraud_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # FastAPI Backend
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    container_name: fraud_api
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/fraud_db
+      JWT_SECRET_KEY: ${JWT_SECRET_KEY:-super-secret-jwt-key-change-me}
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./models:/app/credit_card_fraud_detection/models
+      - ./data/processed:/app/credit_card_fraud_detection/data/processed
+    command: uvicorn credit_card_fraud_detection.api.app:app --host 0.0.0.0 --port 8000 --reload
+
+  # Streamlit Dashboard
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile.dashboard
+    container_name: fraud_dashboard
+    environment:
+      API_URL: http://api:8000
+    ports:
+      - "8501:8501"
+    depends_on:
+      - api
+    command: streamlit run credit_card_fraud_detection/dashboard/app.py --server.port=8501 --server.address=0.0.0.0
+
+volumes:
+  postgres_data:
