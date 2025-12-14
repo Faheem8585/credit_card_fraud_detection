@@ -14,29 +14,24 @@ A production-ready, full-stack fraud detection system built with multi-model ens
   <tr>
     <td width="50%">
       <img src="dashboard/assets/pipeline_diagram.png" alt="ML Pipeline Architecture" />
-      <p align="center"><b>System Architecture</b></p>
+      <p align="center"><b>System Architecture & ML Pipeline</b></p>
     </td>
     <td width="50%">
-      <!-- Add your fraud detection page screenshot here -->
+      <img src="dashboard/assets/ui_fraud_detection.png" alt="Fraud Detection" />
       <p align="center"><b>Fraud Detection Interface</b></p>
-      <p align="center"><i>Take a screenshot of the fraud detection page at http://localhost:8501</i></p>
     </td>
   </tr>
   <tr>
     <td width="50%">
-      <!-- Add model performance screenshot here -->
+      <img src="dashboard/assets/ui_model_performance.png" alt="Model Performance" />
       <p align="center"><b>Model Performance Dashboard</b></p>
-      <p align="center"><i>Screenshot of performance visualizations page</i></p>
     </td>
     <td width="50%">
-      <!-- Add admin panel screenshot here -->
-      <p align="center"><b>Admin Panel</b></p>
-      <p align="center"><i>Screenshot of admin statistics dashboard</i></p>
+      <img src="dashboard/assets/ui_admin_panel.png" alt="Admin Panel" />
+      <p align="center"><b>Admin Panel - System Statistics</b></p>
     </td>
   </tr>
 </table>
-
-> **Note**: To add UI screenshots, capture screens from your running application and save them in `dashboard/assets/` directory, then update the image paths above.
 
 ## 🎯 Features
 
