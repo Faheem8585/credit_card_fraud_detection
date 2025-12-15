@@ -7,6 +7,12 @@ A production-ready, full-stack fraud detection system built with multi-model ens
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.28+-red.svg)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
+## 🌐 Live Demo
+
+**Try it out:** [https://faheem8585-credit-card-fraud-detection-dashboardapp-pgntja.streamlit.app](https://faheem8585-credit-card-fraud-detection-dashboardapp-pgntja.streamlit.app)
+
+> **Note:** The live demo runs in a limited cloud environment. For full functionality including the API backend, follow the local installation instructions below.
+
 ## 📸 Application Screenshots
 
 ### System Overview & Authentication
