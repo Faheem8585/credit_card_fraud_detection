@@ -7,28 +7,84 @@ A production-ready, full-stack fraud detection system built with multi-model ens
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.28+-red.svg)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
-## 📸 Screenshots
+## 📸 Application Screenshots
 
-### Dashboard Interface
+### System Overview & Authentication
+
 <table>
   <tr>
     <td width="50%">
-      <img src="dashboard/assets/pipeline_diagram.png" alt="ML Pipeline Architecture" />
-      <p align="center"><b>System Architecture & ML Pipeline</b></p>
+      <img src="dashboard/assets/pipeline_diagram.png" alt="ML Pipeline" />
+      <p align="center"><b>🔄 ML Pipeline Architecture</b></p>
+      <p align="center"><i>Complete data flow from Kaggle dataset through preprocessing, multi-model training, ensemble creation, to production API and user interface</i></p>
     </td>
     <td width="50%">
-      <img src="dashboard/assets/ui_fraud_detection.png" alt="Fraud Detection" />
-      <p align="center"><b>Fraud Detection Interface</b></p>
+      <img src="dashboard/assets/screenshot_01_login_page.png" alt="Login Page" />
+      <p align="center"><b>🔐 Login Interface</b></p>
+      <p align="center"><i>Clean authentication page displaying key metrics: 97.66% AUC, 284,807 transactions, and 0.17% fraud rate</i></p>
+    </td>
+  </tr>
+</table>
+
+### Fraud Detection Interface
+
+<table>
+  <tr>
+    <td width="50%">
+      <img src="dashboard/assets/screenshot_02_fraud_detection.png" alt="Fraud Detection" />
+      <p align="center"><b>🔍 Transaction Analysis Form</b></p>
+      <p align="center"><i>User-friendly interface for submitting transactions with amount, time, and PCA feature presets (Normal/Suspicious/Custom)</i></p>
+    </td>
+    <td width="50%">
+      <img src="dashboard/assets/screenshot_09_metrics_table.png" alt="Metrics Summary" />
+      <p align="center"><b>📋 Model Performance Summary</b></p>
+      <p align="center"><i>Comprehensive comparison showing Gradient Boosting as the best performer (0.9766 AUC) among all models</i></p>
+    </td>
+  </tr>
+</table>
+
+### Model Performance Visualizations
+
+<table>
+  <tr>
+    <td width="50%">
+      <img src="dashboard/assets/screenshot_03_roc_curves.png" alt="ROC Curves" />
+      <p align="center"><b>📈 ROC Curves Comparison</b></p>
+      <p align="center"><i>Receiver Operating Characteristic curves for all models (LR: 0.9660, RF: 0.9621, GB: 0.9766, Iso: 0.8254, Ensemble: 0.9668)</i></p>
+    </td>
+    <td width="50%">
+      <img src="dashboard/assets/screenshot_04_model_comparison.png" alt="AUC Comparison" />
+      <p align="center"><b>📊 Model AUC Comparison</b></p>
+      <p align="center"><i>Horizontal bar chart highlighting Gradient Boosting's superior performance with trophy indicator</i></p>
     </td>
   </tr>
   <tr>
     <td width="50%">
-      <img src="dashboard/assets/ui_model_performance.png" alt="Model Performance" />
-      <p align="center"><b>Model Performance Dashboard</b></p>
+      <img src="dashboard/assets/screenshot_05_confusion_matrices.png" alt="Confusion Matrices" />
+      <p align="center"><b>🔢 Confusion Matrices Grid</b></p>
+      <p align="center"><i>Visual comparison of True Positives, False Positives, True Negatives, and False Negatives across all 5 models</i></p>
     </td>
     <td width="50%">
-      <img src="dashboard/assets/ui_admin_panel.png" alt="Admin Panel" />
-      <p align="center"><b>Admin Panel - System Statistics</b></p>
+      <img src="dashboard/assets/screenshot_06_precision_recall.png" alt="Precision-Recall" />
+      <p align="center"><b>⚖️ Precision-Recall Curves</b></p>
+      <p align="center"><i>Trade-off analysis at different thresholds showing ensemble achieving 78.15% average precision</i></p>
+    </td>
+  </tr>
+</table>
+
+### Real-Time Monitoring & Administration
+
+<table>
+  <tr>
+    <td width="50%">
+      <img src="dashboard/assets/screenshot_08_live_monitor.png" alt="Live Monitor" />
+      <p align="center"><b>🔴 Live Transaction Monitor</b></p>
+      <p align="center"><i>Real-time simulation showing transaction stream with fraud probabilities, decisions (ALLOW/BLOCK), and risk levels</i></p>
+    </td>
+    <td width="50%">
+      <img src="dashboard/assets/screenshot_07_admin_panel.png" alt="Admin Dashboard" />
+      <p align="center"><b>⚙️ Admin Dashboard</b></p>
+      <p align="center"><i>System-wide statistics: 22 total transactions, 1 user, 0 blocked transactions, 0% fraud rate, 0 pending alerts</i></p>
     </td>
   </tr>
 </table>
