@@ -18,27 +18,35 @@ def create_admin_user():
     
     db = SessionLocal()
     try:
-        # Check if admin exists
-        admin_email = "admin@fraud-detection.com"
-        existing_admin = crud.get_user_by_email(db, admin_email)
+        # List of admin accounts to create
+        admin_accounts = [
+            {"email": "admin@fraud-detection.com", "password": "admin123"},
+            {"email": "admin2@fraud.com", "password": "admin123"}
+        ]
         
-        if existing_admin:
-            print(f"✅ Admin user already exists: {admin_email}")
-            # Update role to admin if not already
-            if existing_admin.role != "admin":
-                existing_admin.role = "admin"
-                db.commit()
-                print(f"✅ Updated role to admin")
-        else:
-            # Create new admin user
-            admin_user = crud.create_user(db, admin_email, "admin123", role="admin")
-            print(f"✅ Created admin user: {admin_email}")
-            print(f"   Password: admin123")
-            print(f"   Please change the password after first login!")
+        for admin_info in admin_accounts:
+            # Check if admin exists
+            existing_admin = crud.get_user_by_email(db, admin_info["email"])
+            
+            if existing_admin:
+                print(f"✅ Admin user already exists: {admin_info['email']}")
+                # Update role to admin if not already
+                if existing_admin.role != "admin":
+                    existing_admin.role = "admin"
+                    db.commit()
+                    print(f"   ✅ Updated role to admin")
+            else:
+                # Create new admin user
+                admin_user = crud.create_user(db, admin_info["email"], admin_info["password"], role="admin")
+                print(f"✅ Created admin user: {admin_info['email']}")
+                print(f"   Password: {admin_info['password']}")
         
         print("\n🎉 Admin setup complete!")
-        print(f"   Email: {admin_email}")
-        print(f"   Password: admin123")
+        print("\nAdmin Credentials:")
+        for admin_info in admin_accounts:
+            print(f"   Email: {admin_info['email']}")
+            print(f"   Password: {admin_info['password']}")
+        print("\n⚠️  Please change the passwords after first login!")
         
     except Exception as e:
         print(f"❌ Error creating admin user: {e}")
