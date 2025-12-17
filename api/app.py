@@ -344,8 +344,47 @@ def startup_event():
     try:
         init_db()
         print("✅ Database initialized")
+        
+        # Create admin users automatically
+        print("Setting up admin users...")
+        create_admin_users()
+        
     except Exception as e:
         print(f"⚠️  Database init: {e}")
+
+def create_admin_users():
+    """Create default admin users on startup"""
+    from sqlalchemy.orm import Session
+    db = next(get_db())
+    
+    admin_accounts = [
+        {"email": "admin@fraud-detection.com", "password": "admin123"},
+        {"email": "admin2@fraud.com", "password": "admin123"}
+    ]
+    
+    try:
+        for admin_info in admin_accounts:
+            existing_admin = crud.get_user_by_email(db, admin_info["email"])
+            
+            if existing_admin:
+                # Update role to admin if not already
+                if existing_admin.role != "admin":
+                    existing_admin.role = "admin"
+                    db.commit()
+                    print(f"✅ Updated {admin_info['email']} to admin role")
+                else:
+                    print(f"✅ Admin user exists: {admin_info['email']}")
+            else:
+                # Create new admin user
+                crud.create_user(db, admin_info["email"], admin_info["password"], role="admin")
+                print(f"✅ Created admin user: {admin_info['email']}")
+        
+        print("🎉 Admin setup complete!")
+        
+    except Exception as e:
+        print(f"⚠️  Admin setup error: {e}")
+    finally:
+        db.close()
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
