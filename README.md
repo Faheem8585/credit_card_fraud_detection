@@ -144,7 +144,7 @@ Dataset: 284,807 transactions (0.17% fraud rate) from Kaggle
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/yourusername/credit-card-fraud-detection.git
+git clone https://github.com/Faheem8585/credit-card-fraud-detection.git
 cd credit-card-fraud-detection
 ```
 
@@ -153,18 +153,38 @@ cd credit-card-fraud-detection
 pip install -r requirements.txt
 ```
 
-3. **Run the application**
+3. **Initialize the database and create admin user**
 ```bash
-# Terminal 1: Start API
-python api/app.py
+python scripts/init_admin.py
+```
 
-# Terminal 2: Start Dashboard
+This will create:
+- Database tables
+- Default admin user with credentials:
+  - Email: `admin@fraud-detection.com`
+  - Password: `admin123`
+
+4. **Run the application**
+
+**Important:** You need to run BOTH servers:
+
+```bash
+# Terminal 1: Start the API Backend (REQUIRED)
+cd /path/to/credit-card-fraud-detection
+python -m uvicorn api.app:app --host 0.0.0.0 --port 8000 --reload
+
+# Terminal 2: Start the Dashboard Frontend
+cd /path/to/credit-card-fraud-detection
 streamlit run dashboard/app.py
 ```
 
-4. **Access the application**
+5. **Access the application**
 - Dashboard: http://localhost:8501
 - API Docs: http://localhost:8000/docs
+
+**Login with:**
+- Admin: `admin@fraud-detection.com` / `admin123`
+- Or create a new account via the Signup tab
 
 ### Docker Deployment (Recommended)
 
@@ -214,8 +234,10 @@ curl -X POST "http://localhost:8000/predict" \
 ### Admin Access
 
 **Default Admin Credentials:**
-- Email: `admin2@fraud.com`
+- Email: `admin@fraud-detection.com`
 - Password: `admin123`
+
+> ⚠️ **Important**: Change the admin password after first login in production!
 
 **Admin Features:**
 - System-wide transaction statistics
